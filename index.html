@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cartão de Visita - ISA BORDADOS</title>
+  <style>
+    :root {
+      --cor-destaque: #e91e63;
+      --cor-destaque-hover: #ad1457;
+      --cor-fundo: #fff0f5;
+      --cor-header: #ffe4ec;
+      --cor-texto: #4a4a4a;
+      --cor-suave: #999;
+      --gradiente: linear-gradient(120deg, #ffc1e3, #f48fb1);
+      --decoracao: url('https://cdn-icons-png.flaticon.com/512/3462/3462061.png');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #fff0f5, #fff);
+      color: var(--cor-texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 20px 0px;
+      border-radius: 0 0 60px 60px;
+      text-align: center;
+      color: white;
+      background: var(--gradiente);
+    }
+
+    header::after {
+      content: "👡";
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.2;
+      top: 10px;
+      left: 20px;
+    }
+
+    #fotoPerfil {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+
+    main {
+      flex: 1;
+      padding: 30px 20px 10px;
+      text-align: center;
+      background: white;
+      margin: 20px auto;
+      width: 95%;
+      max-width: 700px;
+      border-radius: 20px;
+      border: 2px dashed #ffc1e3;
+      box-shadow: 0 4px 12px rgba(255, 192, 203, 0.2);
+      position: relative;
+    }
+
+    main::before {
+      content: "🌸";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      font-size: 30px;
+    }
+
+    main::after {
+      content: "🌸";
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-size: 30px;
+    }
+
+    h1, h2 {
+      font-size: 28px;
+      margin: 10px 0;
+      color: var(--cor-destaque);
+    }
+
+    h3 {
+      font-size: 18px;
+      color: var(--cor-texto);
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--cor-texto);
+    }
+
+    .info p {
+      margin: 8px 0;
+    }
+
+    .botoes {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button {
+      background: var(--cor-destaque);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    button:hover {
+      background: var(--cor-destaque-hover);
+      transform: scale(1.04);
+    }
+
+    #imgModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    #imgModalContent {
+      display: block;
+      margin: 5% auto;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #fff;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #closeModal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 50%;
+    }
+
+    footer {
+      padding: 20px;
+      background: var(--cor-header);
+      text-align: center;
+      font-size: 14px;
+      color: var(--cor-suave);
+      border-top: 1px solid #ddd;
+    }
+
+    footer .creditos {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    footer strong {
+      cursor: pointer;
+      color: var(--cor-destaque);
+    }
+
+    @media (max-width: 600px) {
+      #fotoPerfil {
+        width: 140px;
+        height: 140px;
+      }
+
+      h1, h2 {
+        font-size: 22px;
+      }
+
+      .info {
+        font-size: 15px;
+      }
+
+      .botoes {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      #closeModal {
+        font-size: 26px;
+        top: 10px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="foto.jpg" alt="Foto do Cliente" id="fotoPerfil" />
+  </header>
+
+  <main>
+    <h2>ISA BORDADOS 👡✨</h2>
+    <div class="info">
+      <h3>Chinelos femininos sob encomenda 🌺</h3>
+      <p><strong>Atendimento:</strong> 8:00 às 18:00</p>
+      <p>Frete para todo o Brasil <strong>(a calcular)</strong></p>
+    </div>
+
+    <div class="botoes">
+      <button onclick="abrirLink('https://wa.me/554399035716')">WhatsApp</button>
+      <button onclick="abrirLink('https://wa.me/c/554399035716')">Catálogo</button>
+      <button onclick="abrirLink('https://www.instagram.com/izachinelos/profilecard/?igsh=MWtka24zbmtvNnQxdQ==')">
+        <img src="instagram.png" alt="Instagram"> Instagram
+      </button>
+      <button onclick="abrirLink('https://www.facebook.com/share/16euboVhzc/')">
+        <img src="facebook.png" alt="Facebook"> Facebook
+      </button>
+    </div>
+  </main>
+
+  <div id="imgModal">
+    <span id="closeModal" onclick="fecharModal()">×</span>
+    <img id="imgModalContent" src="foto.jpg" alt="Foto ampliada">
+  </div>
+
+  <footer>
+    <p><strong>ISA BORDADOS</strong> agradece a sua preferência!</p>
+    <div class="creditos">
+      Desenvolvido por <strong onclick="abrirLink('https://wa.me/5543996350864')">@HubertPradoRamos 💻</strong>
+    </div>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("imgModal");
+    const foto = document.getElementById("fotoPerfil");
+    const modalImg = document.getElementById("imgModalContent");
+
+    foto.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = foto.src;
+    });
+
+    function fecharModal() {
+      modal.style.display = "none";
+    }
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) fecharModal();
+    });
+
+    function abrirLink(url) {
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
