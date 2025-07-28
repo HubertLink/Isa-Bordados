@@ -39,16 +39,18 @@
       border-radius: 0 0 60px 60px;
       text-align: center;
       color: white;
-      background: var(--gradiente);
+      background-image: url('fundo.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    header::after {
-      content: "👡";
+    header::before {
+      content: '';
       position: absolute;
-      font-size: 80px;
-      opacity: 0.2;
-      top: 10px;
-      left: 20px;
+      inset: 0;
+      background: var(--gradiente);
+      opacity: 0.4;
+      z-index: 0;
     }
 
     #fotoPerfil {
@@ -246,7 +248,7 @@
     <div class="info">
       <h3>Chinelos feitos sob encomenda 🌺</h3>
       <p><strong>Atendimento:</strong> 8:00 às 18:00</p>
-      <p>Frete para todo o Brasil <strong>(a calcular)</strong></p>
+      <p>Envio para todo Brasil Frete <strong>a calcular</strong></p>
     </div>
 
     <div class="botoes">
